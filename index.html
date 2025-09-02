@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubrik Pemarkahan Amali</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke CSS tambahan -->
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center mb-4">Rubrik Pemarkahan Amali - MPU2082</h1>
+        <h2 class="text-center mb-4">(Ambilan Oktober 2024)</h2>
+
+        <form id="rubricForm">
+            <!-- HP4 - Kemahiran Interpersonal (30%) -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3>HP4: Kemahiran Interpersonal (30%)</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Mengorganisasi (A4) -->
+                    <div class="mb-3">
+                        <label for="organizingA4" class="form-label">Mengorganisasi (A4) (15%)</label>
+                        <select class="form-select" id="organizingA4" name="organizingA4" required>
+                            <option value="" selected disabled>Pilih Tahap</option>
+                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                            <option value="7.4">Lemah (< 7.5)</option>
+                        </select>
+                    </div>
+
+                    <!-- Mengamalkan tingkahlaku positif (KMI3) -->
+                    <div class="mb-3">
+                        <label for="positiveBehaviorKMI3" class="form-label">Mengamalkan tingkahlaku positif (KMI3) (15%)</label>
+                        <select class="form-select" id="positiveBehaviorKMI3" name="positiveBehaviorKMI3" required>
+                            <option value="" selected disabled>Pilih Tahap</option>
+                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                            <option value="7.4">Lemah (< 7.5)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HP5 - Kemahiran Komunikasi (30%) -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h3>HP5: Kemahiran Komunikasi (30%)</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Mengorganisasi (A4) - Komunikasi -->
+                    <div class="mb-3">
+                        <label for="organizingA4Comm" class="form-label">Mengorganisasi (A4) (15%)</label>
+                        <select class="form-select" id="organizingA4Comm" name="organizingA4Comm" required>
+                             <option value="" selected disabled>Pilih Tahap</option>
+                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                            <option value="7.4">Lemah (< 7.5)</option>
+                        </select>
+                    </div>
+
+                    <!-- Menggunakan kemahiran komunikasi bukan lisan (KMK12) -->
+                    <div class="mb-3">
+                        <label for="nonVerbalCommKMK12" class="form-label">Menggunakan kemahiran komunikasi bukan lisan (KMK12) (15%)</label>
+                        <select class="form-select" id="nonVerbalCommKMK12" name="nonVerbalCommKMK12" required>
+                            <option value="" selected disabled>Pilih Tahap</option>
+                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                            <option value="7.4">Lemah (< 7.5)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Amali 2 - 30% -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h3>Amali 2: 30%</h3>
+                </div>
+                <div class="card-body">
+
+                    <!-- HP3 - Kemahiran Praktikal (15%) -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-secondary text-white">
+                            <h5>HP3: Kemahiran Praktikal (15%)</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Mekanisme (P4) -->
+                            <div class="mb-3">
+                                <label for="mechanismP4" class="form-label">Mekanisme (P4) (15%)</label>
+                                <select class="form-select" id="mechanismP4" name="mechanismP4" required>
+                                    <option value="" selected disabled>Pilih Tahap</option>
+                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                                    <option value="7.4">Lemah (< 7.5)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HP8 - Kepimpinan, Autonomi dan Tanggungjawab (15%) -->
+                     <div class="card">
+                        <div class="card-header bg-secondary text-white">
+                            <h5>HP8: Kepimpinan, Autonomi dan Tanggungjawab (15%)</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Menghayati nilai A5 -->
+                            <div class="mb-3">
+                                <label for="valueAppreciationA5" class="form-label">Menghayati nilai A5 (15%)</label>
+                                <select class="form-select" id="valueAppreciationA5" name="valueAppreciationA5" required>
+                                    <option value="" selected disabled>Pilih Tahap</option>
+                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                                    <option value="7.4">Lemah (< 7.5)</option>
+                                </select>
+                            </div>
+
+                            <!-- Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 -->
+                            <div class="mb-3">
+                                <label for="responsibilityKAT10" class="form-label">Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 (15%)</label>
+                                <select class="form-select" id="responsibilityKAT10" name="responsibilityKAT10" required>
+                                    <option value="" selected disabled>Pilih Tahap</option>
+                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
+                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
+                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
+                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
+                                    <option value="7.4">Lemah (< 7.5)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg w-100" onclick="calculateScore()">Kira Markah</button>
+        </form>
+
+        <div id="result" class="mt-4 p-3 border rounded bg-light" style="display:none;">
+            <h3>Keputusan</h3>
+            <p><strong>Markah HP4 (Interpersonal):</strong> <span id="scoreHP4">0</span> / 30</p>
+            <p><strong>Markah HP5 (Komunikasi):</strong> <span id="scoreHP5">0</span> / 30</p>
+            <p><strong>Markah Amali 2 (HP3 & HP8):</strong> <span id="scoreAmali2">0</span> / 30</p>
+            <p><strong>Jumlah Markah:</strong> <span id="totalScore">0</span> / 90</p>
+            <p><strong>Gred:</strong> <span id="grade">-</span></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="script.js"></script> <!-- Link ke JavaScript -->
+</body>
+</html>
