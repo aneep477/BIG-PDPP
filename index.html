@@ -3,17 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubrik Pemarkahan Amali</title>
+    <title>Rubrik Pemarkahan Amali - MPU2082</title>
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css"> <!-- Link ke CSS tambahan -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container mt-5 mb-5">
         <h1 class="text-center mb-4">Rubrik Pemarkahan Amali - MPU2082</h1>
         <h2 class="text-center mb-4">(Ambilan Oktober 2024)</h2>
 
-        <form id="rubricForm">
+        <!-- Pemilih Pelajar -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h3>Pilih Pelajar</h3>
+            </div>
+            <div class="card-body">
+                <label for="studentSelect" class="form-label">Senarai Pelajar:</label>
+                <select class="form-select" id="studentSelect" name="studentSelect">
+                    <option value="" selected disabled>Pilih seorang pelajar</option>
+                    <!-- Pilihan pelajar akan dimuat di sini oleh JavaScript -->
+                </select>
+                <div id="studentInfo" class="mt-2" style="display:none;">
+                    <p><strong>Nama:</strong> <span id="selectedStudentName"></span></p>
+                    <p><strong>No. IC:</strong> <span id="selectedStudentIC"></span></p>
+                    <p><strong>No. Giliran:</strong> <span id="selectedStudentAGiliran"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <form id="rubricForm" style="display:none;"> <!-- Borang disembunyikan sehingga pelajar dipilih -->
             <!-- HP4 - Kemahiran Interpersonal (30%) -->
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
@@ -151,7 +170,7 @@
         </form>
 
         <div id="result" class="mt-4 p-3 border rounded bg-light" style="display:none;">
-            <h3>Keputusan</h3>
+            <h3>Keputusan untuk <span id="resultStudentName"></span></h3>
             <p><strong>Markah HP4 (Interpersonal):</strong> <span id="scoreHP4">0</span> / 30</p>
             <p><strong>Markah HP5 (Komunikasi):</strong> <span id="scoreHP5">0</span> / 30</p>
             <p><strong>Markah Amali 2 (HP3 & HP8):</strong> <span id="scoreAmali2">0</span> / 30</p>
@@ -162,6 +181,8 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script> <!-- Link ke JavaScript -->
+    <!-- Masukkan data pelajar sebagai array JavaScript -->
+    <script src="students.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
