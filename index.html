@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubrik Pemarkahan Amali - MPU2082</title>
+    <title>Rubrik Pemarkahan Amali & Ujian - MPU2082</title>
     <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Jika ada penyesuaian CSS tambahan -->
 </head>
 <body>
     <div class="container mt-5 mb-5">
         <h1 class="text-center mb-4">Rubrik Pemarkahan Amali & Ujian - MPU2082</h1>
         <h2 class="text-center mb-4">(Ambilan Oktober 2024)</h2>
 
-        <!-- Pemilih Pelajar -->
+        <!-- Penapis Pelajar -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h3>Penapis Pelajar</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="classFilter" class="form-label">Kelas:</label>
+                        <select class="form-select" id="classFilter">
+                            <option value="">Semua Kelas</option>
+                            <!-- Pilihan kelas akan dimuat oleh JS -->
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="seriesFilter" class="form-label">Siri:</label>
+                        <select class="form-select" id="seriesFilter">
+                            <option value="">Semua Siri</option>
+                            <!-- Pilihan siri akan dimuat oleh JS -->
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-secondary" onclick="applyFilters()">Gunakan Penapis</button>
+            </div>
+        </div>
+
+        <!-- Pemilih Pelajar (akan dikemas kini selepas penapisan) -->
         <div class="card mb-4">
             <div class="card-header bg-secondary text-white">
                 <h3>Pilih Pelajar</h3>
@@ -28,116 +54,129 @@
                     <p><strong>Nama:</strong> <span id="selectedStudentName"></span></p>
                     <p><strong>No. IC:</strong> <span id="selectedStudentIC"></span></p>
                     <p><strong>No. Giliran:</strong> <span id="selectedStudentAGiliran"></span></p>
+                    <p><strong>Kelas:</strong> <span id="selectedStudentClass"></span></p>
+                    <p><strong>Siri:</strong> <span id="selectedStudentSeries"></span></p>
                 </div>
             </div>
         </div>
 
-        <form id="rubricForm" style="display:none;"> <!-- Borang disembunyikan sehingga pelajar dipilih -->
+        <form id="rubricForm" style="display:none;">
             <!-- HP4 - Kemahiran Interpersonal (30%) -->
             <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h3>HP4: Kemahiran Interpersonal (30%)</h3>
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">HP4: Kemahiran Interpersonal (30%)</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Mengorganisasi (A4) - 15% -->
                     <div class="mb-3">
                         <label for="organizingA4" class="form-label">Mengorganisasi (A4) (15%)</label>
                         <input type="number" class="form-control" id="organizingA4" name="organizingA4" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
-
-                    <!-- Mengamalkan tingkahlaku positif (KMI3) - 15% -->
                     <div class="mb-3">
                         <label for="positiveBehaviorKMI3" class="form-label">Mengamalkan tingkahlaku positif (KMI3) (15%)</label>
-                         <input type="number" class="form-control" id="positiveBehaviorKMI3" name="positiveBehaviorKMI3" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                        <input type="number" class="form-control" id="positiveBehaviorKMI3" name="positiveBehaviorKMI3" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                        <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notesHP4" class="form-label">Catatan HP4:</label>
+                        <textarea class="form-control" id="notesHP4" name="notesHP4" rows="2" placeholder="Masukkan catatan untuk HP4..."></textarea>
                     </div>
                 </div>
             </div>
 
             <!-- HP5 - Kemahiran Komunikasi (30%) -->
             <div class="card mb-4">
-                <div class="card-header bg-success text-white">
-                    <h3>HP5: Kemahiran Komunikasi (30%)</h3>
+                <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">HP5: Kemahiran Komunikasi (30%)</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Mengorganisasi (A4) - Komunikasi - 15% -->
                     <div class="mb-3">
                         <label for="organizingA4Comm" class="form-label">Mengorganisasi (A4) (15%)</label>
                         <input type="number" class="form-control" id="organizingA4Comm" name="organizingA4Comm" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                        <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
-
-                    <!-- Menggunakan kemahiran komunikasi bukan lisan (KMK12) - 15% -->
                     <div class="mb-3">
                         <label for="nonVerbalCommKMK12" class="form-label">Menggunakan kemahiran komunikasi bukan lisan (KMK12) (15%)</label>
                         <input type="number" class="form-control" id="nonVerbalCommKMK12" name="nonVerbalCommKMK12" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                        <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notesHP5" class="form-label">Catatan HP5:</label>
+                        <textarea class="form-control" id="notesHP5" name="notesHP5" rows="2" placeholder="Masukkan catatan untuk HP5..."></textarea>
                     </div>
                 </div>
             </div>
 
-             <!-- Amali 2 - 30% -->
+            <!-- Amali 2 - 30% -->
             <div class="card mb-4">
-                <div class="card-header bg-info text-white">
-                    <h3>Amali 2: 30%</h3>
+                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Amali 2: 30%</h3>
                 </div>
                 <div class="card-body">
-
                     <!-- HP3 - Kemahiran Praktikal (15%) -->
                     <div class="card mb-3">
                         <div class="card-header bg-secondary text-white">
                             <h5>HP3: Kemahiran Praktikal (15%)</h5>
                         </div>
                         <div class="card-body">
-                            <!-- Mekanisme (P4) - 15% -->
                             <div class="mb-3">
                                 <label for="mechanismP4" class="form-label">Mekanisme (P4) (15%)</label>
                                 <input type="number" class="form-control" id="mechanismP4" name="mechanismP4" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                                <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="notesHP3" class="form-label">Catatan HP3:</label>
+                                <textarea class="form-control" id="notesHP3" name="notesHP3" rows="2" placeholder="Masukkan catatan untuk HP3..."></textarea>
                             </div>
                         </div>
                     </div>
 
                     <!-- HP8 - Kepimpinan, Autonomi dan Tanggungjawab (15%) -->
-                     <div class="card">
+                    <div class="card">
                         <div class="card-header bg-secondary text-white">
                             <h5>HP8: Kepimpinan, Autonomi dan Tanggungjawab (15%)</h5>
                         </div>
                         <div class="card-body">
-                            <!-- Menghayati nilai A5 - 15% -->
                             <div class="mb-3">
                                 <label for="valueAppreciationA5" class="form-label">Menghayati nilai A5 (15%)</label>
                                 <input type="number" class="form-control" id="valueAppreciationA5" name="valueAppreciationA5" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                                <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                             </div>
-
-                            <!-- Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 - 15% -->
                             <div class="mb-3">
                                 <label for="responsibilityKAT10" class="form-label">Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 (15%)</label>
                                 <input type="number" class="form-control" id="responsibilityKAT10" name="responsibilityKAT10" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
-                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                                <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="notesHP8" class="form-label">Catatan HP8:</label>
+                                <textarea class="form-control" id="notesHP8" name="notesHP8" rows="2" placeholder="Masukkan catatan untuk HP8..."></textarea>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- Ujian - 10% -->
             <div class="card mb-4">
-                <div class="card-header bg-warning text-dark">
-                    <h3>Ujian: 10%</h3>
+                <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Ujian: 10%</h3>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="examScore" class="form-label">Markah Ujian (10%)</label>
                         <input type="number" class="form-control" id="examScore" name="examScore" min="0" max="10" step="0.1" placeholder="Masukkan markah (0-10)">
                     </div>
+                    <div class="mb-3">
+                        <label for="notesExam" class="form-label">Catatan Ujian:</label>
+                        <textarea class="form-control" id="notesExam" name="notesExam" rows="2" placeholder="Masukkan catatan untuk Ujian..."></textarea>
+                    </div>
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary btn-lg w-100" onclick="calculateScore()">Kira Markah Keseluruhan</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                <button type="button" class="btn btn-success me-md-2" onclick="saveData()">Simpan Data</button>
+                <button type="button" class="btn btn-primary" onclick="calculateScore()">Kira Markah</button>
+            </div>
         </form>
 
         <div id="result" class="mt-4 p-3 border rounded bg-light" style="display:none;">
@@ -150,10 +189,17 @@
             <p><strong>Jumlah Markah Keseluruhan:</strong> <span id="totalScore">0.00</span> / 100.00</p>
             <p><strong>Gred:</strong> <span id="grade">-</span></p>
         </div>
+
+        <!-- Butang Muat Turun Excel -->
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-info btn-lg" onclick="exportToExcel()">Muat Turun Data (Excel)</button>
+        </div>
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SheetJS Library for Excel Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <!-- Masukkan data pelajar sebagai array JavaScript -->
     <script src="students.js"></script>
     <script src="script.js"></script>
