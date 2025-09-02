@@ -1,4 +1,67 @@
+// script.js
+
+// Fungsi untuk memuatkan senarai pelajar ke dalam dropdown
+function loadStudents() {
+    const studentSelect = document.getElementById('studentSelect');
+    students.forEach(student => {
+        const option = document.createElement('option');
+        option.value = student.id; // Gunakan ID sebagai nilai
+        option.textContent = `${student.name} (${student.a_giliran})`; // Papar nama dan no giliran
+        studentSelect.appendChild(option);
+    });
+}
+
+// Fungsi untuk menangani perubahan pemilihan pelajar
+function onStudentSelectChange() {
+    const studentSelect = document.getElementById('studentSelect');
+    const selectedStudentId = parseInt(studentSelect.value);
+    const studentInfoDiv = document.getElementById('studentInfo');
+    const rubricForm = document.getElementById('rubricForm');
+    const resultDiv = document.getElementById('result');
+
+    if (selectedStudentId) {
+        const selectedStudent = students.find(student => student.id === selectedStudentId);
+        if (selectedStudent) {
+            document.getElementById('selectedStudentName').textContent = selectedStudent.name;
+            document.getElementById('selectedStudentIC').textContent = selectedStudent.ic;
+            document.getElementById('selectedStudentAGiliran').textContent = selectedStudent.a_giliran;
+            studentInfoDiv.style.display = 'block';
+            rubricForm.style.display = 'block'; // Paparkan borang rubrik
+            resetForm(); // Reset borang setiap kali pelajar baru dipilih
+            resultDiv.style.display = 'none'; // Sembunyikan keputusan sebelumnya
+        }
+    } else {
+        studentInfoDiv.style.display = 'none';
+        rubricForm.style.display = 'none';
+        resultDiv.style.display = 'none';
+    }
+}
+
+// Fungsi untuk mereset borang rubrik
+function resetForm() {
+    document.getElementById('rubricForm').reset();
+    // Anda juga boleh reset nilai paparan keputusan di sini jika perlu
+    document.getElementById('scoreHP4').textContent = '0';
+    document.getElementById('scoreHP5').textContent = '0';
+    document.getElementById('scoreAmali2').textContent = '0';
+    document.getElementById('totalScore').textContent = '0';
+    document.getElementById('grade').textContent = '-';
+}
+
 function calculateScore() {
+    // Dapatkan ID pelajar yang dipilih
+    const studentSelect = document.getElementById('studentSelect');
+    const selectedStudentId = parseInt(studentSelect.value);
+    if (!selectedStudentId) {
+        alert("Sila pilih seorang pelajar dahulu.");
+        return;
+    }
+    const selectedStudent = students.find(student => student.id === selectedStudentId);
+    if (!selectedStudent) {
+        alert("Ralat: Maklumat pelajar tidak dijumpai.");
+        return;
+    }
+
     // Dapatkan nilai dari setiap dropdown
     const organizingA4 = parseFloat(document.getElementById('organizingA4').value) || 0;
     const positiveBehaviorKMI3 = parseFloat(document.getElementById('positiveBehaviorKMI3').value) || 0;
@@ -35,6 +98,7 @@ function calculateScore() {
     }
 
     // Paparkan keputusan
+    document.getElementById('resultStudentName').textContent = selectedStudent.name;
     document.getElementById('scoreHP4').textContent = scoreHP4.toFixed(2);
     document.getElementById('scoreHP5').textContent = scoreHP5.toFixed(2);
     document.getElementById('scoreAmali2').textContent = (scoreHP3 + scoreHP8).toFixed(2); // Gabungan HP3 & HP8
@@ -46,8 +110,13 @@ function calculateScore() {
 }
 
 // Pilihan: Kira markah secara automatik apabila pilihan berubah
-document.querySelectorAll('select').forEach(select => {
-    select.addEventListener('change', calculateScore);
+// document.querySelectorAll('select').forEach(select => {
+//     select.addEventListener('change', calculateScore);
+// });
+
+// Muatkan senarai pelajar apabila halaman dimuatkan
+document.addEventListener('DOMContentLoaded', function() {
+    loadStudents();
+    // Tambah event listener untuk pemilih pelajar
+    document.getElementById('studentSelect').addEventListener('change', onStudentSelectChange);
 });
-// Jika anda ingin kira automatik, anda boleh tambah event listener untuk setiap select.
-// Contoh di atas akan cuba kira setiap kali pilihan berubah (anda mungkin perlu pastikan semua pilihan dibuat dulu).
