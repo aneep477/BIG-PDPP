@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container mt-5 mb-5">
-        <h1 class="text-center mb-4">Rubrik Pemarkahan Amali - MPU2082</h1>
+        <h1 class="text-center mb-4">Rubrik Pemarkahan Amali & Ujian - MPU2082</h1>
         <h2 class="text-center mb-4">(Ambilan Oktober 2024)</h2>
 
         <!-- Pemilih Pelajar -->
@@ -39,30 +39,18 @@
                     <h3>HP4: Kemahiran Interpersonal (30%)</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Mengorganisasi (A4) -->
+                    <!-- Mengorganisasi (A4) - 15% -->
                     <div class="mb-3">
                         <label for="organizingA4" class="form-label">Mengorganisasi (A4) (15%)</label>
-                        <select class="form-select" id="organizingA4" name="organizingA4" required>
-                            <option value="" selected disabled>Pilih Tahap</option>
-                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                            <option value="7.4">Lemah (< 7.5)</option>
-                        </select>
+                        <input type="number" class="form-control" id="organizingA4" name="organizingA4" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                        <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
 
-                    <!-- Mengamalkan tingkahlaku positif (KMI3) -->
+                    <!-- Mengamalkan tingkahlaku positif (KMI3) - 15% -->
                     <div class="mb-3">
                         <label for="positiveBehaviorKMI3" class="form-label">Mengamalkan tingkahlaku positif (KMI3) (15%)</label>
-                        <select class="form-select" id="positiveBehaviorKMI3" name="positiveBehaviorKMI3" required>
-                            <option value="" selected disabled>Pilih Tahap</option>
-                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                            <option value="7.4">Lemah (< 7.5)</option>
-                        </select>
+                         <input type="number" class="form-control" id="positiveBehaviorKMI3" name="positiveBehaviorKMI3" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
                 </div>
             </div>
@@ -73,30 +61,18 @@
                     <h3>HP5: Kemahiran Komunikasi (30%)</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Mengorganisasi (A4) - Komunikasi -->
+                    <!-- Mengorganisasi (A4) - Komunikasi - 15% -->
                     <div class="mb-3">
                         <label for="organizingA4Comm" class="form-label">Mengorganisasi (A4) (15%)</label>
-                        <select class="form-select" id="organizingA4Comm" name="organizingA4Comm" required>
-                             <option value="" selected disabled>Pilih Tahap</option>
-                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                            <option value="7.4">Lemah (< 7.5)</option>
-                        </select>
+                        <input type="number" class="form-control" id="organizingA4Comm" name="organizingA4Comm" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
 
-                    <!-- Menggunakan kemahiran komunikasi bukan lisan (KMK12) -->
+                    <!-- Menggunakan kemahiran komunikasi bukan lisan (KMK12) - 15% -->
                     <div class="mb-3">
                         <label for="nonVerbalCommKMK12" class="form-label">Menggunakan kemahiran komunikasi bukan lisan (KMK12) (15%)</label>
-                        <select class="form-select" id="nonVerbalCommKMK12" name="nonVerbalCommKMK12" required>
-                            <option value="" selected disabled>Pilih Tahap</option>
-                            <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                            <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                            <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                            <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                            <option value="7.4">Lemah (< 7.5)</option>
-                        </select>
+                        <input type="number" class="form-control" id="nonVerbalCommKMK12" name="nonVerbalCommKMK12" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                         <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                     </div>
                 </div>
             </div>
@@ -114,17 +90,11 @@
                             <h5>HP3: Kemahiran Praktikal (15%)</h5>
                         </div>
                         <div class="card-body">
-                            <!-- Mekanisme (P4) -->
+                            <!-- Mekanisme (P4) - 15% -->
                             <div class="mb-3">
                                 <label for="mechanismP4" class="form-label">Mekanisme (P4) (15%)</label>
-                                <select class="form-select" id="mechanismP4" name="mechanismP4" required>
-                                    <option value="" selected disabled>Pilih Tahap</option>
-                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                                    <option value="7.4">Lemah (< 7.5)</option>
-                                </select>
+                                <input type="number" class="form-control" id="mechanismP4" name="mechanismP4" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                             </div>
                         </div>
                     </div>
@@ -135,30 +105,18 @@
                             <h5>HP8: Kepimpinan, Autonomi dan Tanggungjawab (15%)</h5>
                         </div>
                         <div class="card-body">
-                            <!-- Menghayati nilai A5 -->
+                            <!-- Menghayati nilai A5 - 15% -->
                             <div class="mb-3">
                                 <label for="valueAppreciationA5" class="form-label">Menghayati nilai A5 (15%)</label>
-                                <select class="form-select" id="valueAppreciationA5" name="valueAppreciationA5" required>
-                                    <option value="" selected disabled>Pilih Tahap</option>
-                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                                    <option value="7.4">Lemah (< 7.5)</option>
-                                </select>
+                                <input type="number" class="form-control" id="valueAppreciationA5" name="valueAppreciationA5" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                             </div>
 
-                            <!-- Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 -->
+                            <!-- Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 - 15% -->
                             <div class="mb-3">
                                 <label for="responsibilityKAT10" class="form-label">Bertanggungjawab laksanakan amanah bg diri dan pasukan KAT10 (15%)</label>
-                                <select class="form-select" id="responsibilityKAT10" name="responsibilityKAT10" required>
-                                    <option value="" selected disabled>Pilih Tahap</option>
-                                    <option value="15">Amat Cemerlang (13.5 - 15)</option>
-                                    <option value="13.4">Cemerlang (11.3 - 13.4)</option>
-                                    <option value="11.2">Kepujian (9.0 - 11.2)</option>
-                                    <option value="8.9">Sederhana (7.5 - 8.9)</option>
-                                    <option value="7.4">Lemah (< 7.5)</option>
-                                </select>
+                                <input type="number" class="form-control" id="responsibilityKAT10" name="responsibilityKAT10" min="0" max="15" step="0.1" placeholder="Masukkan markah (0-15)">
+                                 <div class="form-text">Cemerlang: 11.3 - 13.4, Amat Cemerlang: 13.5 - 15</div>
                             </div>
                         </div>
                     </div>
@@ -166,15 +124,30 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary btn-lg w-100" onclick="calculateScore()">Kira Markah</button>
+            <!-- Ujian - 10% -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h3>Ujian: 10%</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="examScore" class="form-label">Markah Ujian (10%)</label>
+                        <input type="number" class="form-control" id="examScore" name="examScore" min="0" max="10" step="0.1" placeholder="Masukkan markah (0-10)">
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg w-100" onclick="calculateScore()">Kira Markah Keseluruhan</button>
         </form>
 
         <div id="result" class="mt-4 p-3 border rounded bg-light" style="display:none;">
             <h3>Keputusan untuk <span id="resultStudentName"></span></h3>
-            <p><strong>Markah HP4 (Interpersonal):</strong> <span id="scoreHP4">0</span> / 30</p>
-            <p><strong>Markah HP5 (Komunikasi):</strong> <span id="scoreHP5">0</span> / 30</p>
-            <p><strong>Markah Amali 2 (HP3 & HP8):</strong> <span id="scoreAmali2">0</span> / 30</p>
-            <p><strong>Jumlah Markah:</strong> <span id="totalScore">0</span> / 90</p>
+            <p><strong>Markah HP4 (Interpersonal - 30%):</strong> <span id="scoreHP4">0.00</span> / 30.00</p>
+            <p><strong>Markah HP5 (Komunikasi - 30%):</strong> <span id="scoreHP5">0.00</span> / 30.00</p>
+            <p><strong>Markah Amali 2 (HP3 & HP8 - 30%):</strong> <span id="scoreAmali2">0.00</span> / 30.00</p>
+            <p><strong>Markah Ujian (10%):</strong> <span id="scoreExam">0.00</span> / 10.00</p>
+            <hr>
+            <p><strong>Jumlah Markah Keseluruhan:</strong> <span id="totalScore">0.00</span> / 100.00</p>
             <p><strong>Gred:</strong> <span id="grade">-</span></p>
         </div>
     </div>
