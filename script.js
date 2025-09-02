@@ -40,12 +40,20 @@ function onStudentSelectChange() {
 // Fungsi untuk mereset borang rubrik
 function resetForm() {
     document.getElementById('rubricForm').reset();
-    // Anda juga boleh reset nilai paparan keputusan di sini jika perlu
-    document.getElementById('scoreHP4').textContent = '0';
-    document.getElementById('scoreHP5').textContent = '0';
-    document.getElementById('scoreAmali2').textContent = '0';
-    document.getElementById('totalScore').textContent = '0';
+    // Reset nilai paparan keputusan
+    document.getElementById('scoreHP4').textContent = '0.00';
+    document.getElementById('scoreHP5').textContent = '0.00';
+    document.getElementById('scoreAmali2').textContent = '0.00';
+    document.getElementById('scoreExam').textContent = '0.00';
+    document.getElementById('totalScore').textContent = '0.00';
     document.getElementById('grade').textContent = '-';
+}
+
+// Fungsi untuk mengira markah berdasarkan pemberat
+function calculateWeightedScore(rawScore, maxRawScore, weightPercentage) {
+    if (isNaN(rawScore) || rawScore < 0) return 0;
+    const cappedScore = Math.min(rawScore, maxRawScore); // Pastikan markah tidak melebihi maksimum
+    return (cappedScore / maxRawScore) * weightPercentage;
 }
 
 function calculateScore() {
@@ -62,7 +70,8 @@ function calculateScore() {
         return;
     }
 
-    // Dapatkan nilai dari setiap dropdown
+    // Dapatkan nilai dari setiap input markah
+    // Parse ke Float dan gunakan 0 jika input kosong atau tidak sah
     const organizingA4 = parseFloat(document.getElementById('organizingA4').value) || 0;
     const positiveBehaviorKMI3 = parseFloat(document.getElementById('positiveBehaviorKMI3').value) || 0;
     const organizingA4Comm = parseFloat(document.getElementById('organizingA4Comm').value) || 0;
@@ -70,20 +79,25 @@ function calculateScore() {
     const mechanismP4 = parseFloat(document.getElementById('mechanismP4').value) || 0;
     const valueAppreciationA5 = parseFloat(document.getElementById('valueAppreciationA5').value) || 0;
     const responsibilityKAT10 = parseFloat(document.getElementById('responsibilityKAT10').value) || 0;
+    const examScore = parseFloat(document.getElementById('examScore').value) || 0;
 
-    // Kira markah untuk setiap bahagian berdasarkan pemberat
+    // Kira markah berdasarkan pemberat
     // Amali 1 (60%)
-    const scoreHP4 = ((organizingA4 + positiveBehaviorKMI3) / 30) * 30; // 30% dari 60%
-    const scoreHP5 = ((organizingA4Comm + nonVerbalCommKMK12) / 30) * 30; // 30% dari 60%
+    const scoreHP4 = calculateWeightedScore((organizingA4 + positiveBehaviorKMI3), 30, 30); // Max 30, Weight 30%
+    const scoreHP5 = calculateWeightedScore((organizingA4Comm + nonVerbalCommKMK12), 30, 30); // Max 30, Weight 30%
 
     // Amali 2 (30%)
-    const scoreHP3 = (mechanismP4 / 15) * 15; // 15% dari 30%
-    const scoreHP8 = ((valueAppreciationA5 + responsibilityKAT10) / 30) * 15; // 15% dari 30%
+    const scoreAmali2HP3 = calculateWeightedScore(mechanismP4, 15, 15); // Max 15, Weight 15%
+    const scoreAmali2HP8 = calculateWeightedScore((valueAppreciationA5 + responsibilityKAT10), 30, 15); // Max 30, Weight 15%
+    const scoreAmali2 = scoreAmali2HP3 + scoreAmali2HP8;
 
-    // Kira jumlah markah
-    const totalScore = scoreHP4 + scoreHP5 + scoreHP3 + scoreHP8;
+    // Ujian (10%)
+    const scoreExam = calculateWeightedScore(examScore, 10, 10); // Max 10, Weight 10%
 
-    // Tentukan gred berdasarkan jumlah markah (90 adalah markah penuh)
+    // Kira jumlah markah keseluruhan (maksimum 100)
+    const totalScore = scoreHP4 + scoreHP5 + scoreAmali2 + scoreExam;
+
+    // Tentukan gred berdasarkan jumlah markah (100 adalah markah penuh)
     let grade = 'Tidak Sah';
     if (totalScore >= 81) {
         grade = 'A (Amat Cemerlang)';
@@ -93,15 +107,19 @@ function calculateScore() {
         grade = 'B+ (Kepujian)';
     } else if (totalScore >= 61) {
         grade = 'B (Sederhana)';
-    } else {
+    } else if (totalScore > 0) { // Tambah syarat > 0 untuk elak gred C jika markah 0
         grade = 'C (Lemah)';
+    } else {
+        grade = 'Tidak Hadir / Tiada Markah'; // Untuk kes markah 0 atau negatif
     }
 
-    // Paparkan keputusan
+
+    // Paparkan keputusan dengan 2 tempat perpuluhan
     document.getElementById('resultStudentName').textContent = selectedStudent.name;
     document.getElementById('scoreHP4').textContent = scoreHP4.toFixed(2);
     document.getElementById('scoreHP5').textContent = scoreHP5.toFixed(2);
-    document.getElementById('scoreAmali2').textContent = (scoreHP3 + scoreHP8).toFixed(2); // Gabungan HP3 & HP8
+    document.getElementById('scoreAmali2').textContent = scoreAmali2.toFixed(2);
+    document.getElementById('scoreExam').textContent = scoreExam.toFixed(2);
     document.getElementById('totalScore').textContent = totalScore.toFixed(2);
     document.getElementById('grade').textContent = grade;
 
@@ -109,10 +127,6 @@ function calculateScore() {
     document.getElementById('result').style.display = 'block';
 }
 
-// Pilihan: Kira markah secara automatik apabila pilihan berubah
-// document.querySelectorAll('select').forEach(select => {
-//     select.addEventListener('change', calculateScore);
-// });
 
 // Muatkan senarai pelajar apabila halaman dimuatkan
 document.addEventListener('DOMContentLoaded', function() {
